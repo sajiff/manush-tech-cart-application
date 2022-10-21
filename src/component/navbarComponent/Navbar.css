@@ -1,0 +1,70 @@
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 80px;
+  background-image: linear-gradient(#fdfbfb, #ebedee);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.navbar-logo-container {
+}
+.navbar-logo {
+  height: 72px;
+}
+
+.navbar-cart-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.navbar-cart-icon {
+  font-size: larger;
+}
+
+.navbar-cart-counter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.navbar-cart-counter-text {
+  color: white;
+  text-align: center;
+}
+
+@media (max-width: 998px) {
+  .navbar-container {
+    justify-content: center;
+  }
+  .navbar-cart-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+
+  .navbar-cart-container:active {
+    box-shadow: none;
+  }
+}
