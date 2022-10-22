@@ -13,7 +13,7 @@ const Totals = ({ title, value }) => (
     </h2>
   </div>
 );
-export const CartModal = ({ open, closeModal }) => {
+export const CartModal = ({ open, closeModal, checkoutModal }) => {
   if (!open) return null;
   return (
     <div className="cart-modal-container">
@@ -27,11 +27,24 @@ export const CartModal = ({ open, closeModal }) => {
         <h2>Your Items</h2>
         <hr />
         <CartItem />
+        <CartItem />
+
         <hr />
         <Totals title={"Sub-total"} value={25400} />
         <Totals title={"Delivery Charge"} value={100} />
         <hr />
         <Totals title={"Grand-total"} value={25400} />
+        <div className="checkout-container">
+          <button
+            onClick={() => {
+              closeModal();
+              checkoutModal();
+            }}
+            className="btn checkout-btn"
+          >
+            <h3>Proceed to checkout</h3>
+          </button>
+        </div>
       </div>
     </div>
   );

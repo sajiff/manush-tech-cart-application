@@ -13,6 +13,14 @@
   width: calc(100% / 3);
   background-color: #f5f5f5;
   padding: 10px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.cart-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .cart-header {
@@ -110,6 +118,19 @@
 .cart-totals h2 {
   margin: 0;
   font-weight: 500;
+}
+
+.checkout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.checkout-btn {
+  background-color: rgb(17, 202, 202);
+  border-radius: 10px;
+  width: 220px;
 }
 
 @media (max-width: 896px) {
