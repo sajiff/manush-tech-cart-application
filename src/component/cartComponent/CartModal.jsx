@@ -1,8 +1,12 @@
 import { faXmark, faEquals } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart, getTotals } from "../../redux/cartSlice";
 import { CartItem } from "./CartItem";
 import "./CartModal.css";
+
+const DELIVERY_CHARGE = 100;
 
 const Totals = ({ title, value }) => (
   <div className="cart-totals">
@@ -16,6 +20,20 @@ const Totals = ({ title, value }) => (
 );
 export const CartModal = ({ open, closeModal, checkoutModal }) => {
   const cart = useSelector((state) => state.cart);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart]);
+
+  const handleCheckout = () => {
+    closeModal();
+    checkoutModal();
+  };
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
   if (!open) return null;
   return (
     <div className="cart-modal-container">
@@ -37,16 +55,16 @@ export const CartModal = ({ open, closeModal, checkoutModal }) => {
             ))}
 
             <hr />
-            <Totals title={"Sub-total"} value={25400} />
-            <Totals title={"Delivery Charge"} value={100} />
+            <Totals title={"Sub-total"} value={cart.cartTotalAmount} />
+            <Totals title={"Delivery Charge"} value={DELIVERY_CHARGE} />
             <hr />
-            <Totals title={"Grand-total"} value={25400} />
+            <Totals
+              title={"Grand-total"}
+              value={cart.cartTotalAmount + DELIVERY_CHARGE}
+            />
             <div className="checkout-container">
               <button
-                onClick={() => {
-                  closeModal();
-                  checkoutModal();
-                }}
+                onClick={() => handleCheckout()}
                 className="btn checkout-btn"
               >
                 <h3>Proceed to checkout</h3>
@@ -55,8 +73,7 @@ export const CartModal = ({ open, closeModal, checkoutModal }) => {
             <div className="checkout-container">
               <button
                 onClick={() => {
-                  closeModal();
-                  checkoutModal();
+                  handleClearCart();
                 }}
                 className="btn checkout-btn"
               >

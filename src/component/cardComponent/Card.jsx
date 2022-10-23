@@ -1,7 +1,7 @@
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../redux/cartSlice";
+import { addToCart, decreaseCartQuantity } from "../../redux/cartSlice";
 import "./Card.css";
 
 export const Card = ({ product }) => {
@@ -9,6 +9,14 @@ export const Card = ({ product }) => {
   const cart = useSelector((state) => state.cart);
 
   const handleAddToCart = () => {
+    dispatch(addToCart(product));
+  };
+
+  const handleDecreaseCartQuantity = () => {
+    dispatch(decreaseCartQuantity(product));
+  };
+
+  const handleIncreaseCartQuantity = () => {
     dispatch(addToCart(product));
   };
   return (
@@ -25,7 +33,7 @@ export const Card = ({ product }) => {
         {cart.cartItems.find((item) => item.id === product.id) ? (
           <>
             <button
-              onClick={() => console.log("decrease")}
+              onClick={() => handleDecreaseCartQuantity()}
               className="increase-decrease-btn"
             >
               <FontAwesomeIcon
@@ -42,7 +50,7 @@ export const Card = ({ product }) => {
               }
             </h1>
             <button
-              onClick={() => console.log("increase")}
+              onClick={() => handleIncreaseCartQuantity()}
               className="increase-decrease-btn"
             >
               <FontAwesomeIcon

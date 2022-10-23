@@ -5,7 +5,7 @@ import App from "./App";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { productsApi } from "./redux/productsApi";
-import cartSlice from "./redux/cartSlice";
+import cartSlice, { getTotals } from "./redux/cartSlice";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +16,7 @@ const store = configureStore({
     getDefaultMiddleware().concat(productsApi.middleware),
 });
 
+store.dispatch(getTotals());
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
