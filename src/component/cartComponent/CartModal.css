@@ -44,6 +44,7 @@
 }
 
 .cart-image {
+  width: 80px;
   height: 80px;
   object-fit: contain;
 }
@@ -95,12 +96,12 @@
 }
 
 .cart-item-quantity {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   background-color: white;
   border: 1px solid gray;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 

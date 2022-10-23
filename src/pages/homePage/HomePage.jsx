@@ -1,6 +1,6 @@
 import { Card } from "../../component/cardComponent/Card";
 import "./HomePage.css";
-import { useGetAllProductsQuery } from "../../redux/productsApi";
+import { useGetAllProductsQuery } from "../../redux/services/productsApi";
 
 export const HomePage = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();

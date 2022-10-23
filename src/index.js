@@ -2,19 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import { productsApi } from "./redux/productsApi";
-import cartSlice, { getTotals } from "./redux/cartSlice";
-
-const store = configureStore({
-  reducer: {
-    [productsApi.reducerPath]: productsApi.reducer,
-    cart: cartSlice,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(productsApi.middleware),
-});
+import { getTotals } from "./redux/features/cartSlice";
+import { store } from "./redux/store";
 
 store.dispatch(getTotals());
 const root = ReactDOM.createRoot(document.getElementById("root"));

@@ -1,7 +1,10 @@
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, decreaseCartQuantity } from "../../redux/cartSlice";
+import {
+  addToCart,
+  decreaseCartQuantity,
+} from "../../redux/features/cartSlice";
 import "./Card.css";
 
 export const Card = ({ product }) => {

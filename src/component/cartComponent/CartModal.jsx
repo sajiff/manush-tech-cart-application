@@ -2,7 +2,7 @@ import { faXmark, faEquals } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart, getTotals } from "../../redux/cartSlice";
+import { clearCart, getTotals } from "../../redux/features/cartSlice";
 import { CartItem } from "./CartItem";
 import "./CartModal.css";
 
@@ -55,12 +55,15 @@ export const CartModal = ({ open, closeModal, checkoutModal }) => {
             ))}
 
             <hr />
-            <Totals title={"Sub-total"} value={cart.cartTotalAmount} />
+            <Totals
+              title={"Sub-total"}
+              value={cart.cartTotalAmount.toFixed(2)}
+            />
             <Totals title={"Delivery Charge"} value={DELIVERY_CHARGE} />
             <hr />
             <Totals
               title={"Grand-total"}
-              value={cart.cartTotalAmount + DELIVERY_CHARGE}
+              value={(cart.cartTotalAmount + DELIVERY_CHARGE).toFixed(2)}
             />
             <div className="checkout-container">
               <button
@@ -82,6 +85,7 @@ export const CartModal = ({ open, closeModal, checkoutModal }) => {
             </div>
           </>
         )}
+        <br />
       </div>
     </div>
   );
