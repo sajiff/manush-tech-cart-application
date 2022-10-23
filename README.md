@@ -14,13 +14,13 @@ For testing: npm test
 
 ## Project details
 
-The project was done using Reactjs. The state management was done using Redux and localstorage.
+The project was done using Reactjs. The state management was done using Redux and localstorage. The project is responsive for DTM (Desktop, Tablet, Mobile)
 
 #
 
 ## Bonus
 
-Inside the "\_\_test\_\_" folder there is a file named cardComponent.test.js. In that file there are four unit tests done on the card component.
+Inside the \_\_test\_\_ folder there is a file named cardComponent.test.js. In that file there are four unit tests done on the card component.
 
 test 1: Tests if in the product card the image is the right image placed.
 
