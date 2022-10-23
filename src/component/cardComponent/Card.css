@@ -19,7 +19,9 @@
 }
 
 .card-image {
-  height: 220px;
+  width: 90%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .card-title {

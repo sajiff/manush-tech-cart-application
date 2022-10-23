@@ -1,30 +1,25 @@
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Card.css";
-export const Card = () => {
+export const Card = ({ product }) => {
   return (
     <div className="card-container">
       <div className="card-image-container">
-        <img
-          className="card-image"
-          src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-          alt=""
-        />
+        <img className="card-image" src={product.image} alt="" />
       </div>
-      <span className="card-title">
-        Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptopsa das asda sdas das
-      </span>
+      <span className="card-title">{product.title}</span>
       <h2 className="card-price">
-        <span className="taka">৳</span>254
+        <span className="taka">৳</span>
+        {product.price}
       </h2>
       <div className="card-button-section">
-        {/* <button
+        <button
           onClick={() => console.log("add to cart")}
           className="add-to-cart-btn"
         >
           <h1>ADD TO CART</h1>
-        </button> */}
-        <button
+        </button>
+        {/* <button
           onClick={() => console.log("decrease")}
           className="increase-decrease-btn"
         >
@@ -46,7 +41,7 @@ export const Card = () => {
             color="white"
             icon={faPlus}
           />
-        </button>
+        </button> */}
       </div>
     </div>
   );

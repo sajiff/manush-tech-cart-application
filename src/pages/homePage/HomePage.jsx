@@ -1,25 +1,28 @@
-import { useEffect, useState } from "react";
-
 import { Card } from "../../component/cardComponent/Card";
 import "./HomePage.css";
-import { fetchProductsApi } from "../../api/FetchProducsApi";
+import { useGetAllProductsQuery } from "../../redux/productsApi";
 
 export const HomePage = () => {
-  const [data, setdata] = useState([]);
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+  const { data, error, isLoading } = useGetAllProductsQuery();
 
-  const fetchProducts = () => {
-    fetchProductsApi()
-      .then((res) => setdata(res))
-      .catch((err) => console.log(err));
-  };
+  if (isLoading)
+    return (
+      <div className="home-container">
+        <span>Loading....</span>
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className="home-container">
+        <span>Something went wrong :(</span>
+      </div>
+    );
 
   return (
     <div className="home-container">
       {data?.map((item, i) => (
-        <Card key={i} />
+        <Card key={i} product={item} />
       ))}
     </div>
   );

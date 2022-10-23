@@ -1,5 +1,3 @@
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import "./App.css";
 import { CartModal } from "./component/cartComponent/CartModal";
@@ -9,7 +7,7 @@ import { HomePage } from "./pages/homePage/HomePage";
 
 function App() {
   const [cartToggle, setcartToggle] = useState(false);
-  const [modalToggle, setmodalToggle] = useState(true);
+  const [modalToggle, setmodalToggle] = useState(false);
 
   return (
     <div>
