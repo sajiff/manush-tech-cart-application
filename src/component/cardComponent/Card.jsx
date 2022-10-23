@@ -23,7 +23,7 @@ export const Card = ({ product }) => {
     dispatch(addToCart(product));
   };
   return (
-    <div className="card-container">
+    <div data-testid="card-test" className="card-container">
       <div className="card-image-container">
         <img className="card-image" src={product.image} alt="" />
       </div>

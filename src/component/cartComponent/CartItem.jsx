@@ -30,12 +30,12 @@ export const CartItem = ({ cartItem }) => {
   return (
     <div className="cart-item">
       <div className="cart-item-image">
-        <div
+        <button
           onClick={() => handleRemoveFromCart()}
-          className="cart-item-remove"
+          className="btn cart-item-remove"
         >
           <FontAwesomeIcon size="xl" icon={faXmark} />
-        </div>
+        </button>
         <img className="cart-image" src={cartItem.image} alt="" />
       </div>
       <div className="cart-item-details">
