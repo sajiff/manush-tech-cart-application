@@ -1,37 +1,43 @@
 import { faXmark, faEquals } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../../redux/cartSlice";
 
-export const CartItem = () => {
+export const CartItem = ({ cartItem }) => {
+  const dispatch = useDispatch();
+
+  const handleRemoveFromCart = () => {
+    dispatch(removeFromCart(cartItem));
+  };
+
   return (
     <div className="cart-item">
       <div className="cart-item-image">
-        <div className="cart-item-remove">
+        <div
+          onClick={() => handleRemoveFromCart()}
+          className="cart-item-remove"
+        >
           <FontAwesomeIcon size="xl" icon={faXmark} />
         </div>
-        <img
-          className="cart-image"
-          src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-          alt=""
-        />
+        <img className="cart-image" src={cartItem.image} alt="" />
       </div>
       <div className="cart-item-details">
-        <span className="cart-item-title">
-          Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptopsa das asda sdas
-          das
-        </span>
+        <span className="cart-item-title">{cartItem.title}</span>
         <div className="cart-price-details">
           <div className="cart-pricing">
             <h2>
-              <span className="taka">৳</span>254
+              <span className="taka">৳</span>
+              {cartItem.price}
             </h2>
             <FontAwesomeIcon size="xl" icon={faXmark} />
             <div className="cart-item-quantity">
-              <span>10</span>
+              <span>{cartItem.itemQuantity}</span>
             </div>
           </div>
           <FontAwesomeIcon size="xl" icon={faEquals} />
           <h2>
-            <span className="taka">৳</span>25400
+            <span className="taka">৳</span>
+            {cartItem.price * cartItem.itemQuantity}
           </h2>
         </div>
       </div>
